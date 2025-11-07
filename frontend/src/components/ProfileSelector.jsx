@@ -71,15 +71,17 @@ export default function ProfileSelector() {
   // Custom single value renderer to show a tick icon before the active profile
   const SingleValue = (props) => (
     <RSComponents.SingleValue {...props}>
-      <div className="flex items-center gap-2 bg-purple-600 text-white px-3 py-1 rounded-md">
+      <div className="flex items-center gap-2 bg-purple-600 text-white px-2 py-0.5 rounded-md">
         <Check className="h-4 w-4 text-white" />
-        <span className="text-white font-medium">{props.data.label}</span>
+        <span className="text-sm text-white font-medium">
+          {props.data.label}
+        </span>
       </div>
     </RSComponents.SingleValue>
   );
 
   return (
-    <div className="min-w-[14rem] w-auto">
+    <div className="min-w-[11rem] w-auto">
       <label className="text-sm font-medium text-slate-600 flex items-center gap-2 mb-1">
         <Users className="h-4 w-4 text-slate-400" /> Current Profile
       </label>
@@ -102,7 +104,7 @@ export default function ProfileSelector() {
             ...base,
             borderRadius: 10,
             borderColor: state.isFocused ? "#c4b5fd" : "#e2e8f0",
-            minHeight: "44px",
+            minHeight: "36px",
             boxShadow: state.isFocused
               ? "0 6px 18px rgba(124,58,237,0.12)"
               : "0 4px 12px rgba(0,0,0,0.04)",
@@ -123,6 +125,7 @@ export default function ProfileSelector() {
           singleValue: (base, state) => ({
             ...base,
             color: state.selectProps.value ? "#fff" : base.color,
+            fontSize: "0.95rem",
           }),
         }}
       />

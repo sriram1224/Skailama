@@ -15,8 +15,10 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
       <header className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-indigo-600">🧭 Event Management</h1>
+        <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-indigo-600">
+            🧭 Event Management
+          </h1>
           <ProfileSelector />
         </div>
       </header>
