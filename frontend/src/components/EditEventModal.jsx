@@ -5,17 +5,12 @@ import { useAppStore } from "../store/useAppStore";
 import { motion } from "framer-motion";
 import { X, Save, Users, Globe, Clock, Check, Plus } from "lucide-react";
 import { updateEvent } from "../api";
-import CreatableSelect, { components } from "react-select/creatable";
-import axios from "axios";
+import API from "../api";
+import CreatableSelect from "react-select/creatable";
 
-const MenuList = ({ children, onAddRow }) => (
-  <div>
-    <div className="px-1 py-1">{children}</div>
-    <div className="border-t pt-2 px-2">
-      {/* This MenuList will be overridden inside component to wire create input */}
-    </div>
-  </div>
-);
+// Custom menu list implementation is defined below as `CustomMenuList` and
+// wired into the select via the `components` prop. The unused `MenuList`
+// helper was removed to avoid lint noise.
 
 const formatOptionLabel = (option, { isSelected }) => (
   <div className="flex items-center justify-between px-2">
@@ -65,7 +60,8 @@ export default function EditEventModal({ event, onClose, onUpdated }) {
     if (!name || !name.trim()) return;
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/users", {
+      // Creating a profile should be POST /profiles (backend defines POST /)
+      const res = await API.post("/profiles", {
         name: name.trim(),
       });
       await fetchProfiles();

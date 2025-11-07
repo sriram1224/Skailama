@@ -1,7 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
-
-const API = axios.create({ baseURL: "http://localhost:5000/api" });
+import API from "../api";
 
 export const useAppStore = create((set, get) => ({
   profiles: [],

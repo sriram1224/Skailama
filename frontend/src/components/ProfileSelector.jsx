@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import { components as RSComponents } from "react-select";
-import axios from "axios";
+import API from "../api";
 import { Users, Check, Plus } from "lucide-react";
 import { useAppStore } from "../store/useAppStore";
 
@@ -26,7 +26,7 @@ export default function ProfileSelector() {
     setLoading(true);
     try {
       // POST to /api/profiles to match fetchProfiles() which GETs /api/profiles
-      const res = await axios.post("http://localhost:5000/api/profiles", {
+      const res = await API.post("/profiles", {
         name: name.trim(),
       });
       await fetchProfiles();

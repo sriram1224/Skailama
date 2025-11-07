@@ -5,7 +5,7 @@ import dayjs from "../utils/dayjsConfig";
 import tzEntries from "../utils/timezones";
 import { CalendarPlus, Globe, Users, Check, Plus } from "lucide-react";
 import { useAppStore } from "../store/useAppStore";
-import axios from "axios";
+import API from "../api";
 
 const ValueContainer = ({ children, ...props }) => {
   const { getValue } = props;
@@ -48,8 +48,8 @@ export default function CreateEventForm() {
     if (!name || !name.trim()) return;
     setLoading(true);
     try {
-      // post to /api/profiles
-      const res = await axios.post("http://localhost:5000/api/profiles", {
+      // create profile via central API client
+      const res = await API.post("/profiles", {
         name: name.trim(),
       });
       await fetchProfiles();
